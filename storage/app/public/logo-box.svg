@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
+  <!-- Generator: Adobe Illustrator 29.2.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 108)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #231f20;
+        isolation: isolate;
+        opacity: .1;
+      }
+
+      .st1 {
+        fill: #282827;
+      }
+
+      .st2 {
+        fill: #575757;
+      }
+
+      .st3 {
+        fill: silver;
+      }
+
+      .st4 {
+        fill: #a9aaaa;
+      }
+
+      .st5 {
+        fill: #15b6a4;
+      }
+
+      .st6 {
+        fill: #d1d1d1;
+      }
+
+      .st7 {
+        fill: #676767;
+      }
+    </style>
+  </defs>
+  <polygon class="st0" points="11.6 75.7 50.1 53.7 88.9 75.7 50.1 98.4 11.6 75.7"/>
+  <g>
+    <polygon class="st3" points="49.8 94.3 50.1 57.5 18.1 38.3 17.7 75.7 49.8 94.3"/>
+    <polygon class="st4" points="50.1 57.5 81.9 38.9 81.6 76.1 49.8 94.3 50.1 57.5"/>
+    <polygon class="st7" points="81.9 38.9 50.5 20.3 50.1 57.5 81.9 38.9"/>
+    <polygon class="st2" points="50.5 20.3 18.1 38.3 50.1 57.5 50.5 20.3"/>
+    <polygon class="st6" points="18.1 38.3 11.8 19.9 44 1.6 50.5 20.3 18.1 38.3"/>
+    <polygon class="st3" points="50.5 20.3 63.1 5.8 94.8 24.5 81.9 38.9 50.5 20.3"/>
+    <polygon class="st6" points="81.9 39.1 88.4 57.6 56.1 75.6 50.1 57.3 81.9 39.1"/>
+    <polygon class="st6" points="50.1 57.3 36.9 71.6 5.2 53 18.1 38.7 50.1 57.3"/>
+    <polygon class="st5" points="33.3 72.4 20.7 65 20.6 74.8 33.2 82.3 33.3 72.4"/>
+    <polygon class="st1" points="78.7 70 78.7 74.9 70.1 79.8 70.1 74.9 78.7 70"/>
+    <polygon class="st1" points="68.6 75.6 68.5 80.6 59.9 85.4 60 80.5 68.6 75.6"/>
+  </g>
+</svg>
