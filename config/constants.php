@@ -7,10 +7,10 @@
             'url_full' => 'https://thingsneeded.com'
         ],
         'head' => [
-            'title' => '...',
-            'meta_title' => '...',
-            'meta_description' => '...',
-            'meta_keywords' => '...',
+            'title' => 'ThingsNeeded.com',
+            'meta_title' => 'Things Needed',
+            'meta_description' => 'Things Needed',
+            'meta_keywords' => '',
             'link_canonical' => 'https://thingsneeded.com'
         ],
     ];

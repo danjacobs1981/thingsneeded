@@ -42,9 +42,10 @@ class PageController extends Controller
         //dd($related);
 
         // set head items
-        Config::set('constants.head.title', 'Page Title');
-        Config::set('constants.head.meta_title', 'Title');
-        Config::set('constants.head.meta_description', 'Desc');
+        Config::set('constants.head.title', $page->title);
+        Config::set('constants.head.meta_title', $page->title);
+        Config::set('constants.head.meta_description', $page->conclusion);
+        Config::set('constants.head.meta_keywords', $tags->pluck('tag')->implode(',')); // comma sep
         Config::set('constants.head.link_canonical', config('constants.website.url_full').'/en/'.$page->slug.'/');
         // may need to improve the "hreflang" loop in head
 
