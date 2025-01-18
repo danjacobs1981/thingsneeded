@@ -11,7 +11,7 @@
                 <picture>
                     <source srcset="{{ asset('storage/images/card/placeholder.webp') }}" type="image/webp">
                     <source srcset="{{ asset('storage/images/card/placeholder.jpg') }}" type="image/jpeg">
-                    <img loading="lazy" class="w-full block object-cover h-44" width="380" height="176" src="{{ asset('storage/images/card/placeholder.jpg') }}" alt="{{ $item->title }}">
+                    <img loading="lazy" class="w-full block object-cover h-44" width="380" height="176" src="{{ asset('storage/images/card/placeholder.jpg') }}" alt="Placeholder image">
                 </picture>
             @endif
         </div>

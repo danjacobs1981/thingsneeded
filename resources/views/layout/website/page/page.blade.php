@@ -30,7 +30,7 @@
         <header class="bg-slate-100 pt-6">
             <div class="grid justify-center w-full max-w-[800px] mx-auto">
                 <div class="grid gap-2 md:gap-3 justify-center px-3">
-                    <a class="mx-auto inline-block w-fit bg-teal-600 hover:bg-teal-700 rounded-full px-4 py-2 font-medium text-white text-center" href="{{ LaravelLocalization::localizeUrl(route('category', $page->category()->slug)) }}">
+                    <a class="mx-auto inline-block w-fit bg-teal-700 hover:bg-teal-800 rounded-full px-4 py-2 font-medium text-white text-center" href="{{ LaravelLocalization::localizeUrl(route('category', $page->category()->slug)) }}">
                         {{ $page->category()->category }}
                     </a>
                     <h1 class="text-center text-slate-950 text-3xl md:text-4xl xl:text-5xl font-extrabold capitalize">
@@ -213,7 +213,7 @@
                         <ul class="flex flex-wrap items-center justify-start gap-2">
                             @foreach($tags as $tag)
                                 <li>
-                                    <a class="bg-teal-600 hover:bg-teal-700 rounded-md text-white py-2 px-2.5 inline-block lowercase" href="{{ LaravelLocalization::localizeUrl(route('tag', $tag->slug)) }}">
+                                    <a class="bg-teal-700 hover:bg-teal-800 rounded-md text-white py-2 px-2.5 inline-block lowercase" href="{{ LaravelLocalization::localizeUrl(route('tag', $tag->slug)) }}">
                                         {{$tag->tag}}
                                     </a>
                                 </li>
