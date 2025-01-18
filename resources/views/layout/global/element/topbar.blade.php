@@ -1,6 +1,6 @@
 <header>
     <div class="container relative h-[66px] flex items-center">
-        <a href="/" class="block absolute top-0 left-0 px-4 sm:px-8 xl:px-4 2xl:px-8 min-h-[72px]" title="Home">
+        <a href="{{ route('home') }}" class="block absolute top-0 left-0 px-4 sm:px-8 xl:px-4 2xl:px-8 min-h-[72px]" title="Home">
             <img src="{{ asset('storage/logo.svg') }}" width="312" height="72" class="hidden md:block min-h-[72px]" alt="Logo" />
         </a>
         <ul class="h-[66px] ms-auto flex items-center [&>li]:ms-6">
