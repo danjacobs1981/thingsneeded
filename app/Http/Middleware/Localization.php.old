@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class Localization
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+
+        // $locale = session()->get('locale'); // this session variable has been set if a user changes language
+        // if ($locale == null) {
+        //     $locale = $request->hasHeader('X-localization'); // pretty much happens on first load to detect?
+        //     if ($locale == null) {
+        //         $locale = 'en'; // neither of the above then default locale
+        //     }
+        // }
+
+        // // set laravel localization
+        // app()->setLocale($locale);
+
+        // return $next($request);
+
+        app()->setLocale($request->segment(1));
+        return $next($request);
+
+    }
+}
