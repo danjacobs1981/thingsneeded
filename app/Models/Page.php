@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-// use Laravel\Scout\Searchable;
-
 class Page extends TranslatableModel
 {
     use HasFactory;
@@ -93,26 +91,6 @@ class PageTranslation extends Model
     protected $fillable = ['page_id', 'lang_id', 'title', 'introduction', 'conclusion'];
 
     public $timestamps = false;
-
-    /**
-     * Get the indexable data array for the model.
-     *
-     * @return array<string, mixed>
-     */
-    // public function toSearchableArray()
-    // {
-    //     return array_merge($this->toArray(),[
-    //         'id' => (string) $this->id,
-    //         'title' => $this->title,
-    //         'introduction' => $this->introduction,
-    //         'created_at' => $this->created_at->timestamp,
-    //     ]);
-    // }
-
-    // public function searchableAs()
-    // {
-    //     return 'page_index';
-    // }
 
     public function language()
     {

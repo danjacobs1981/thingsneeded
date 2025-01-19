@@ -159,7 +159,7 @@
             </section>
         @endif
         @if(!$sections->isEmpty())
-            <section id="{{ __('page.steps.id') }}" class="bg-teal-100 py-10 mt-8 xl:mt-10 relative overflow-x-hidden">
+            <section id="{{ __('page.steps.id') }}" class="bg-teal-100 py-10 {{ $tips->isEmpty() ? 'mt-10 xl:mt-12' : 'mt-8 xl:mt-10' }} relative overflow-x-hidden">
                 <div class="container lg:max-w-[800px] lg:px-0 grid gap-8">
                     <img src="{{ asset('storage/icons/steps.svg') }}" width="600" height="600" class="hidden 2xl:block absolute -top-28 -right-24" alt="Checklist" />
                     <img src="{{ asset('storage/icons/box-type-2.svg') }}" width="360" height="360" class="hidden 2xl:block absolute -bottom-0 -left-32" alt="Box" />
