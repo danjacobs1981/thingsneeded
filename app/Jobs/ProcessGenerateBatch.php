@@ -2,14 +2,14 @@
 
 namespace App\Jobs;
 
-set_time_limit(0);
-
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
 class ProcessGenerateBatch implements ShouldQueue
 {
     use Queueable;
+
+    public $timeout = 0;
 
     public $amount;
     public $prompt;
