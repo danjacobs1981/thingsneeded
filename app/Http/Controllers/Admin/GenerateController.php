@@ -49,6 +49,8 @@ class GenerateController extends Controller
 
             ProcessGeneratePage::dispatch($request->topic, $request->prompt, $existing_id);
 
+            return 'Page will be created.';
+
         } else if($request->type == "batch") {
 
             $amount = 10;
@@ -58,6 +60,8 @@ class GenerateController extends Controller
             }
 
             ProcessGenerateBatch::dispatch($amount, $request->prompt);
+
+            return 'Page(s) will be created.';
 
         }
 
