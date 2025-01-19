@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+set_time_limit(0);
+
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
