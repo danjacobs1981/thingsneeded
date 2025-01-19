@@ -4,6 +4,7 @@ set_time_limit(0);
 
 use Illuminate\Support\Str;
 
+use App\Models\Author;
 use App\Models\Page;
 use App\Models\PageTranslation;
 use App\Models\Category;
@@ -24,19 +25,22 @@ if (!function_exists('PageInserter')) {
 
     function PageInserter($result, $batch = 0, $existing_id = null) {
 
+        // author
+        $author_id = Author::inRandomOrder()->take(1)->pluck('id')->first();
+
         // category
         $category_insert = Category::firstOrCreate(['slug' => Str::slug($result->category, "-")]);
         CategoryTranslation::firstOrCreate(['category_id' => $category_insert->id, 'lang_id' => 1, 'category' => $result->category]);
 
         // page
         if ($existing_id == null) {
-            $page_insert = Page::create(['input_topic' => $result->input_topic, 'input_prompt' => $result->input_prompt, 'slug' => Str::slug($result->title, "-"), 'category_id' => $category_insert->id, 'reading_time' => $result->reading_time, 'batch' => $batch, 'gemini_model' => $result->gemini_model]);
+            $page_insert = Page::create(['input_topic' => $result->input_topic, 'input_prompt' => $result->input_prompt, 'slug' => Str::slug($result->title, "-"), 'category_id' => $category_insert->id, 'author_id' => $author_id, 'reading_time' => $result->reading_time, 'batch' => $batch, 'gemini_model' => $result->gemini_model]);
             $page_id = $page_insert->id;
             PageTranslation::create(['page_id' => $page_id, 'lang_id' => 1, 'title' => $result->title, 'introduction' => $result->introduction, 'conclusion' => $result->conclusion]);
         } else {
             $existing_slug = Page::where('id', $existing_id)->pluck('slug')->first();
             Page::where('id', $existing_id)->delete();
-            $page_insert = Page::create(['id' => $existing_id, 'input_topic' => $result->input_topic, 'input_prompt' => $result->input_prompt, 'slug' => $existing_slug, 'category_id' => $category_insert->id, 'reading_time' => $result->reading_time, 'batch' => $batch, 'gemini_model' => $result->gemini_model]);
+            $page_insert = Page::create(['id' => $existing_id, 'input_topic' => $result->input_topic, 'input_prompt' => $result->input_prompt, 'slug' => $existing_slug, 'category_id' => $category_insert->id, 'author_id' => $author_id, 'reading_time' => $result->reading_time, 'batch' => $batch, 'gemini_model' => $result->gemini_model]);
             $page_id = $page_insert->id;
             PageTranslation::create(['page_id' => $page_id, 'lang_id' => 1, 'title' => $result->title, 'introduction' => $result->introduction, 'conclusion' => $result->conclusion]);
         }

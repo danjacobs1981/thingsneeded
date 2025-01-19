@@ -11,7 +11,7 @@ class Page extends TranslatableModel
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'input_topic', 'input_prompt', 'slug', 'reading_time', 'category_id', 'image', 'translated', 'products', 'live', 'editing', 'batch', 'gemini_model'];
+    protected $fillable = ['id', 'input_topic', 'input_prompt', 'slug', 'reading_time', 'category_id', 'author_id', 'image', 'translated', 'products', 'live', 'editing', 'batch', 'gemini_model'];
 
     protected $translationModel = PageTranslation::class;
     protected $translationAttributes = ['title', 'introduction', 'conclusion'];
