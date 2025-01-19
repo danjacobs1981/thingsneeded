@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use Laravel\Scout\Searchable;
+// use Laravel\Scout\Searchable;
 
 class Page extends TranslatableModel
 {
-    use HasFactory, Searchable;
+    use HasFactory;
 
     protected $fillable = ['id', 'input_topic', 'input_prompt', 'slug', 'reading_time', 'category_id', 'image', 'translated', 'products', 'live', 'editing', 'batch', 'gemini_model'];
 
@@ -88,7 +88,7 @@ class Page extends TranslatableModel
 
 class PageTranslation extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory;
 
     protected $fillable = ['page_id', 'lang_id', 'title', 'introduction', 'conclusion'];
 
@@ -99,20 +99,20 @@ class PageTranslation extends Model
      *
      * @return array<string, mixed>
      */
-    public function toSearchableArray()
-    {
-        return array_merge($this->toArray(),[
-            'id' => (string) $this->id,
-            'title' => $this->title,
-            'introduction' => $this->introduction,
-            'created_at' => $this->created_at->timestamp,
-        ]);
-    }
+    // public function toSearchableArray()
+    // {
+    //     return array_merge($this->toArray(),[
+    //         'id' => (string) $this->id,
+    //         'title' => $this->title,
+    //         'introduction' => $this->introduction,
+    //         'created_at' => $this->created_at->timestamp,
+    //     ]);
+    // }
 
-    public function searchableAs()
-    {
-        return 'page_index';
-    }
+    // public function searchableAs()
+    // {
+    //     return 'page_index';
+    // }
 
     public function language()
     {
