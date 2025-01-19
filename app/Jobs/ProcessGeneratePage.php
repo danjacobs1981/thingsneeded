@@ -44,6 +44,7 @@ class ProcessGeneratePage implements ShouldQueue
             CategoryTranslator(); // gemini translates any categories not translated yet
             TagTranslator(); // gemini translates any tags not translated yet
             PageTranslator($page_id); // gemini (re)translation of a page
+            PageImager($page_id); // image creation for page
         } else {
             // catch failure
         }
