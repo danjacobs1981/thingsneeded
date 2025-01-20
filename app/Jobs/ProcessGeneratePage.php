@@ -5,6 +5,8 @@ namespace App\Jobs;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
+use Illuminate\Support\Facades\Log;
+
 class ProcessGeneratePage implements ShouldQueue
 {
     use Queueable;
@@ -60,8 +62,10 @@ class ProcessGeneratePage implements ShouldQueue
         } else {
 
             if ($this->page_id) {
+                Log::channel('generate')->error('Gemini failure (when overwriting Page ID '.$this->page_id.')!');
                 throw new \Exception('Page Creation Error: Gemini failure (when overwriting Page ID '.$this->page_id.')!');
             } else {
+                Log::channel('generate')->error('Gemini failure (when creating new page)!');
                 throw new \Exception('Page Creation Error: Gemini failure!');
             }
 

@@ -2,6 +2,8 @@
 
 set_time_limit(0);
 
+use Illuminate\Support\Facades\Log;
+
 use App\Models\Language;
 use App\Models\Page;
 use App\Models\PageTranslation;
@@ -29,12 +31,14 @@ if (!function_exists('PageTranslator')) {
 
         } catch (\Exception $e) {
 
-            throw new \Exception('Translation Error: Page ID '.$page_id.' - does not exist!');
+            Log::channel('generate')->error('PageTranslator: Page ID '.$page_id.' - does not exist!');
+            throw new \Exception('PageTranslator: Page ID '.$page_id.' - does not exist!');
 
         }
 
         if ($page->translated && !$force) {
 
+            Log::channel('generate')->warning('PageTranslator: Page ID '.$page_id.' - page already translated (force = false)!');
             return;
             // log instead?
             // throw new \Exception('Translation: Page ID '.$page_id.' - page already translated (force = false)!');
@@ -44,6 +48,7 @@ if (!function_exists('PageTranslator')) {
 
         if ($page->editing) {
 
+            Log::channel('generate')->warning('PageTranslator: Page ID '.$page_id.' - no translating as in edit mode!');
             return;
             // log instead?
             // throw new \Exception('Translation: Page ID '.$page_id.' - no translating as in edit mode!');
@@ -112,6 +117,7 @@ if (!function_exists('PageTranslator')) {
                 $step['lang_id'] = $lang_id;
                 StepTranslation::create($step);
             }
+            Log::channel('generate')->info('PageTranslator: Page ID '.$page_id.' - translated to '.$language->name.'!');
             sleep(2);
         }
 
@@ -148,6 +154,8 @@ if (!function_exists('PageTranslator')) {
         // set page translated to 1 (now complete)
         $page->update(['translated' => 1]);
 
+        Log::channel('generate')->info('PageTranslator: Page ID '.$page_id.' - finished translating!');
+
     }
 
 }
@@ -161,6 +169,9 @@ if (!function_exists('CategoryTranslator')) {
 
         if ($regenerate) {
             CategoryTranslation::where('lang_id', '!=', 1)->delete();
+            Log::channel('generate')->info('CategoryTranslator: All categories will be translated!');
+        } else {
+            Log::channel('generate')->info('CategoryTranslator: Only new categories will be translated!');
         }
 
         $languages = Language::where('id', '!=', 1)->get();
@@ -191,6 +202,8 @@ if (!function_exists('CategoryTranslator')) {
             }
         }
 
+        Log::channel('generate')->info('CategoryTranslator: Categories finished translating!');
+
     }
 
 }
@@ -204,6 +217,9 @@ if (!function_exists('TagTranslator')) {
 
         if ($regenerate) {
             TagTranslation::where('lang_id', '!=', 1)->delete();
+            Log::channel('generate')->info('TagTranslator: All tags will be translated!');
+        } else {
+            Log::channel('generate')->info('TagTranslator: Only new tags will be translated!');
         }
 
         $languages = Language::where('id', '!=', 1)->get();
@@ -230,6 +246,8 @@ if (!function_exists('TagTranslator')) {
                 }
             }
         }
+
+        Log::channel('generate')->info('TagTranslator: Tags finished translating!');
 
     }
 

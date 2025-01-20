@@ -4,6 +4,8 @@ set_time_limit(0);
 
 use Illuminate\Support\Str;
 
+use Illuminate\Support\Facades\Log;
+
 use App\Models\Author;
 use App\Models\Page;
 use App\Models\PageTranslation;
@@ -37,6 +39,7 @@ if (!function_exists('PageInserter')) {
             $page_insert = Page::create(['input_topic' => $result->input_topic, 'input_prompt' => $result->input_prompt, 'slug' => Str::slug($result->title, "-"), 'category_id' => $category_insert->id, 'author_id' => $author_id, 'reading_time' => $result->reading_time, 'batch' => $batch, 'gemini_model' => $result->gemini_model]);
             $page_id = $page_insert->id;
             PageTranslation::create(['page_id' => $page_id, 'lang_id' => 1, 'title' => $result->title, 'introduction' => $result->introduction, 'conclusion' => $result->conclusion]);
+            Log::channel('generate')->info('PageInserter: Page ID '.$page_id.' - a new page will be created!');
         } else {
             $existing_slug = Page::where('id', $existing_id)->pluck('slug')->first();
             $existing_image = Page::where('id', $existing_id)->pluck('image')->first();
@@ -44,6 +47,7 @@ if (!function_exists('PageInserter')) {
             $page_insert = Page::create(['id' => $existing_id, 'input_topic' => $result->input_topic, 'input_prompt' => $result->input_prompt, 'slug' => $existing_slug, 'category_id' => $category_insert->id, 'author_id' => $author_id, 'image' => $existing_image, 'reading_time' => $result->reading_time, 'batch' => $batch, 'gemini_model' => $result->gemini_model]);
             $page_id = $page_insert->id;
             PageTranslation::create(['page_id' => $page_id, 'lang_id' => 1, 'title' => $result->title, 'introduction' => $result->introduction, 'conclusion' => $result->conclusion]);
+            Log::channel('generate')->info('PageInserter: Page ID '.$page_id.' - existing page will be overwritten (topic & image kept)!');
         }
 
         // thing types
@@ -101,6 +105,8 @@ if (!function_exists('PageInserter')) {
                 }
             }
         }
+
+        Log::channel('generate')->info('PageInserter: Page ID '.$page_id.' - initial data added!');
 
         return $page_id;
 

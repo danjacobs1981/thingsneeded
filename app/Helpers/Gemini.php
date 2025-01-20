@@ -2,6 +2,8 @@
 
 set_time_limit(0);
 
+use Illuminate\Support\Facades\Log;
+
 use Gemini\Laravel\Facades\Gemini;
 use Gemini\Data\GenerationConfig;
 use Gemini\Data\Schema;
@@ -58,12 +60,13 @@ if (!function_exists('IdeaGenerator')) {
 
                     ")->json();
 
+                Log::channel('generate')->info('Gemini IdeaGenerator: complete (count: '.$amount.')!');
+
                 return $result;
 
             } catch (Exception $e) {
-                // If an error occurs, return an error message
-                // echo json_encode(['error' => $e->getMessage()]);
                 $attempts++;
+                Log::channel('generate')->warning('Gemini IdeaGenerator: attempt '.$attempts.'/3!');
                 sleep(5);
                 continue;
             }
@@ -103,13 +106,13 @@ if (!function_exists('Translator')) {
                     ")
                     ->json();
 
+                // Log::channel('generate')->info('Translation complete for '.$language->name.'!');
+
                 return $result;
 
             } catch (Exception $e) {
-                // If an error occurs, return an error message
-                // echo json_encode(['error' => $e->getMessage()]);
                 $attempts++;
-                dd('transV1: '.$e);
+                Log::channel('generate')->warning('Gemini Translator: attempt '.$attempts.'/3 for '.$language->name.'!');
                 sleep(5);
                 continue;
             }
@@ -203,7 +206,8 @@ if (!function_exists('PageCreator')) {
         if (!$overwrite) {
             $topic_exists = Page::where('input_topic', $input_topic)->exists();
             if ($topic_exists) {
-                throw new \Exception('Page Creation Error: Topic already exists!');
+                Log::channel('generate')->error('Gemini PageCreator: Topic already exists!');
+                throw new \Exception('Gemini PageCreator: Topic already exists!');
             }
         }
 
@@ -363,12 +367,13 @@ if (!function_exists('PageCreator')) {
                 $result->input_prompt = $input_prompt;
                 $result->gemini_model = 'gemini-2.0-flash-exp';
 
+                Log::channel('generate')->info('Gemini PageCreator: complete for "'.$input_topic.'"!');
+
                 return $result;
 
             } catch (Exception $e) {
-                // If an error occurs, return an error message
-                // echo json_encode(['error' => $e->getMessage()]);
                 $attempts++;
+                Log::channel('generate')->warning('Gemini PageCreator: attempt '.$attempts.'/3 for "'.$input_topic.'"!');
                 sleep(5);
                 continue;
             }

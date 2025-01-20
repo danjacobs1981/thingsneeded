@@ -5,6 +5,8 @@ set_time_limit(0);
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
+use Illuminate\Support\Facades\Log;
+
 use App\Models\Page;
 
 
@@ -18,15 +20,27 @@ if (!function_exists('PageImager')) {
 
         } catch (\Exception $e) {
 
-            throw new \Exception('Image Creation Error: Page ID '.$page_id.' - does not exist!');
+            Log::channel('generate')->error('PageImager: Page ID '.$page_id.' - does not exist!');
+            throw new \Exception('PageImager: Page ID '.$page_id.' - does not exist!');
 
         }
 
         if ($page->image && !$force) {
 
+            Log::channel('generate')->warning('PageImager: Page ID '.$page_id.' - image already exists (force = false) - no futher action!');
             return;
             // log instead?
             // throw new \Exception('Image Creation: Page ID '.$page_id.' - image already exists (force = false)!');
+
+        }
+
+        if ($page->image) {
+
+            Log::channel('generate')->info('PageImager: Page ID '.$page_id.' - image to be overwritten!');
+
+        } else {
+
+            Log::channel('generate')->info('PageImager: Page ID '.$page_id.' - image to be created!');
 
         }
 
@@ -46,7 +60,8 @@ if (!function_exists('PageImager')) {
 
         if ($image_jpg === FALSE) {
 
-            throw new \Exception('Image Creation Error: Page ID '.$page_id.' - image generation failure!');
+            Log::channel('generate')->error('PageImager: Page ID '.$page_id.' - image generation failure!');
+            throw new \Exception('PageImager: Page ID '.$page_id.' - image generation failure!');
 
         } else {
 
@@ -76,6 +91,8 @@ if (!function_exists('PageImager')) {
 
             // set page image to 1 (now complete)
             $page->update(['image' => 1]);
+
+            Log::channel('generate')->info('PageImager: Page ID '.$page_id.' - image has been created!');
 
         }
 

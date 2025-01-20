@@ -65,6 +65,17 @@ return [
             'replace_placeholders' => true,
         ],
 
+        // things needed - custom channels
+
+        'generate' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/generate.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+
+        // end
+
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),
