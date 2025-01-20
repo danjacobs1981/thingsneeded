@@ -29,15 +29,12 @@ class TranslateController extends Controller
 
         $ids = array_map( 'intval', array_filter( explode(',', $request->id), 'is_numeric' ) );
 
-        $pages = Page::whereIn('id', $ids)->count();
-
-        if($pages !== count($ids)){
-            return dd('not all ids exist');
+        foreach ($ids as $id) {
+            ProcessTranslatePage::dispatch($id, count($ids));
         }
 
-        ProcessTranslatePage::dispatch($ids);
+        return count($ids).' pages will be translated.';
 
-        return 'Page(s) will be translated.';
 
     }
 

@@ -13,14 +13,22 @@ if (!function_exists('PageImager')) {
     function PageImager($page_id, $force = false) {
 
         try {
-            $page = Page::where('id', $page_id)->first();
-        } catch (Throwable $e) {
-            dd('ddddddddddd: '.$e);
+
+            $page = Page::findOrFail($page_id);
+
+        } catch (\Exception $e) {
+
+            throw new \Exception('Image Creation Error: Page ID '.$page_id.' - does not exist!');
+
         }
 
-        if (!$page) return dd('page not exist');
+        if ($page->image && !$force) {
 
-        if ($page->image && !$force) return dd('page already imaged');
+            return;
+            // log instead?
+            // throw new \Exception('Image Creation: Page ID '.$page_id.' - image already exists (force = false)!');
+
+        }
 
         $page->update(['image' => 0]);
 
@@ -32,34 +40,44 @@ if (!function_exists('PageImager')) {
                 "verify_peer_name" => false,
             ),
         );
+
         $rand = rand(99999, 999999999);
-        $image_jpg = file_get_contents('https://image.pollinations.ai/prompt/'.urlencode($prompt).'?width=800&height=382&seed='.$rand.'&enhance=true&nologo=true&model=flux&negative=humans,people,characters,hands,text,words', false, stream_context_create($options));
-        $path = 'images/hero/'.$page->slug;
-        Storage::disk('public')->put($path.'.jpg', $image_jpg);
+        $image_jpg = @file_get_contents('https://image.pollinations.ai/prompt/'.urlencode($prompt).'?width=800&height=382&seed='.$rand.'&enhance=true&nologo=true&model=flux&negative=humans,people,characters,hands,text,words', false, stream_context_create($options));
 
-        $original_jpg = Storage::disk('public')->path($path.'.jpg');
+        if ($image_jpg === FALSE) {
 
-        $manager = new ImageManager(Driver::class);
-        $original_image = $manager->read($original_jpg);
+            throw new \Exception('Image Creation Error: Page ID '.$page_id.' - image generation failure!');
 
-        $image_webp = clone $original_image;
-        $image_jpg_card = clone $original_image;
-        $image_webp_card = clone $original_image;
+        } else {
+
+            $path = 'images/hero/'.$page->slug;
+            Storage::disk('public')->put($path.'.jpg', $image_jpg);
+
+            $original_jpg = Storage::disk('public')->path($path.'.jpg');
+
+            $manager = new ImageManager(Driver::class);
+            $original_image = $manager->read($original_jpg);
+
+            $image_webp = clone $original_image;
+            $image_jpg_card = clone $original_image;
+            $image_webp_card = clone $original_image;
 
 
-        $image_webp = $image_webp->toWebp(75);
-        Storage::disk('public')->put($path.'.webp', $image_webp);
+            $image_webp = $image_webp->toWebp(75);
+            Storage::disk('public')->put($path.'.webp', $image_webp);
 
-        $path_card = 'images/card/'.$page->slug;
+            $path_card = 'images/card/'.$page->slug;
 
-        $image_jpg_card = $image_jpg_card->cover(380, 176)->toJpg(75);
-        Storage::disk('public')->put($path_card.'.jpg', $image_jpg_card);
+            $image_jpg_card = $image_jpg_card->cover(380, 176)->toJpg(75);
+            Storage::disk('public')->put($path_card.'.jpg', $image_jpg_card);
 
-        $image_webp_card = $image_webp_card->cover(380, 176)->toWebp(75);
-        Storage::disk('public')->put($path_card.'.webp', $image_webp_card);
+            $image_webp_card = $image_webp_card->cover(380, 176)->toWebp(75);
+            Storage::disk('public')->put($path_card.'.webp', $image_webp_card);
 
-        // set page image to 1 (now complete)
-        $page->update(['image' => 1]);
+            // set page image to 1 (now complete)
+            $page->update(['image' => 1]);
+
+        }
 
     }
 

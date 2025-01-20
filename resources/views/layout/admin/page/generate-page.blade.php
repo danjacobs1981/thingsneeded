@@ -12,7 +12,7 @@
         <br />
         Further prompt: <input type="text" id="prompt" name="prompt">
         <br />
-        Overwrite Page ID: <input type="text" id="page_id" name="page_id"> (this will take existing topic)
+        Overwrite Page ID: <input type="text" id="page_id" name="page_id"> (this will take existing topic &amp; keep image (if it exists))
         <br />
         <input type="submit" />
         <input type="hidden" id="type" name="type" value="page">

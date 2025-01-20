@@ -14,16 +14,18 @@ class ProcessGeneratePage implements ShouldQueue
     public $topic;
     public $prompt;
     public $page_id;
+    public $batch;
 
     /**
      * Create a new job instance.
      */
-    public function __construct($topic, $prompt, $page_id)
+    public function __construct($topic, $prompt, $page_id, $batch)
     {
 
         $this->topic = $topic;
         $this->prompt = $prompt;
         $this->page_id = $page_id;
+        $this->batch = $batch;
 
     }
 
@@ -33,22 +35,36 @@ class ProcessGeneratePage implements ShouldQueue
     public function handle(): void
     {
 
-        $ignore_topic = false;
+        $overwrite = false;
 
         if ($this->page_id != null) { // it's an overwrite
-            $ignore_topic = true;
+            $overwrite = true;
         }
 
-        $page_data = PageCreator($this->topic, $this->prompt, $ignore_topic); // gemini creates the page
-        // if (!$page_data) return dd('fail');
+        $page_data = PageCreator($this->topic, $this->prompt, $overwrite); // gemini creates the page (3 attempts)
+
         if ($page_data) {
-            $page_id = PageInserter($page_data, 0, $this->page_id); // data, batch (0/1), page_id (if overwrite)
-            CategoryTranslator(); // gemini translates any categories not translated yet
-            TagTranslator(); // gemini translates any tags not translated yet
-            PageTranslator($page_id); // gemini (re)translation of a page
-            PageImager($page_id); // image creation for page
+
+            $page_id = PageInserter($page_data, $this->batch, $this->page_id); // data, batch, page_id (if overwrite)
+            CategoryTranslator(false); // gemini translates any categories not translated yet
+            sleep(2);
+            TagTranslator(false); // gemini translates any tags not translated yet
+            sleep(2);
+            PageTranslator($page_id, true); // gemini translation of a page - forced because there is new content, it needs translating
+            sleep(10);
+            PageImager($page_id, false); // image creation for page - not forced, because if it's a page overwrite, still keep the image (if it exists)
+            if ($this->batch) {
+                sleep(10);
+            }
+
         } else {
-            // catch failure
+
+            if ($this->page_id) {
+                throw new \Exception('Page Creation Error: Gemini failure (when overwriting Page ID '.$this->page_id.')!');
+            } else {
+                throw new \Exception('Page Creation Error: Gemini failure!');
+            }
+
         }
 
     }

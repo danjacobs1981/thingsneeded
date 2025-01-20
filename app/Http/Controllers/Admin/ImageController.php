@@ -25,19 +25,15 @@ class ImageController extends Controller
 
     public function start(Request $request) {
 
-        if (!$request->id) return dd('no id(s) entered');
+        if (!$request->id) return 'No ID(s) entered!';
 
         $ids = array_map( 'intval', array_filter( explode(',', $request->id), 'is_numeric' ) );
 
-        $pages = Page::whereIn('id', $ids)->count();
-
-        if($pages !== count($ids)){
-            return dd('not all ids exist');
+        foreach ($ids as $id) {
+            ProcessImagePage::dispatch($id, count($ids));
         }
 
-        ProcessImagePage::dispatch($ids);
-
-        return 'Images(s) will be created.';
+        return count($ids).' images will be created.';
 
     }
 

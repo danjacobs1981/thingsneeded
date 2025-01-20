@@ -24,16 +24,31 @@ if (!function_exists('PageTranslator')) {
     function PageTranslator($page_id, $force = false) {
 
         try {
-            $page = Page::where('id', $page_id)->first();
-        } catch (Throwable $e) {
-            dd('ddddddddddd: '.$e);
+
+            $page = Page::findOrFail($page_id);
+
+        } catch (\Exception $e) {
+
+            throw new \Exception('Translation Error: Page ID '.$page_id.' - does not exist!');
+
         }
 
-        if (!$page) return dd('page not exist');
+        if ($page->translated && !$force) {
 
-        if ($page->translated && !$force) return dd('page already translated');
+            return;
+            // log instead?
+            // throw new \Exception('Translation: Page ID '.$page_id.' - page already translated (force = false)!');
 
-        if ($page->editing) return dd('page in edit mode');
+        }
+
+
+        if ($page->editing) {
+
+            return;
+            // log instead?
+            // throw new \Exception('Translation: Page ID '.$page_id.' - no translating as in edit mode!');
+
+        }
 
         // delete any existing translations
         PageTranslation::where('lang_id', '!=', 1)->where('page_id', $page_id)->delete();

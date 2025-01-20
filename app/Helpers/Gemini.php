@@ -16,9 +16,7 @@ if (!function_exists('IdeaGenerator')) {
 
     function IdeaGenerator($amount = 20, $prompt = null) {
 
-        $input_topics = Page::pluck('input_topic')->toJson();
-
-        //dd($input_topics);
+        $input_topics = Page::pluck('input_topic')->toJson(); // existing prompts that shouldn't be used
 
         $generationConfig = new GenerationConfig(
             responseMimeType: ResponseMimeType::APPLICATION_JSON,
@@ -66,7 +64,6 @@ if (!function_exists('IdeaGenerator')) {
                 // If an error occurs, return an error message
                 // echo json_encode(['error' => $e->getMessage()]);
                 $attempts++;
-                dd('ideas: '.$e);
                 sleep(5);
                 continue;
             }
@@ -200,11 +197,14 @@ if (!function_exists('ImageCreator')) {
 
 if (!function_exists('PageCreator')) {
 
-    function PageCreator($input_topic, $input_prompt = null, $ignore_topic = false) {
+    function PageCreator($input_topic, $input_prompt = null, $overwrite = false) {
 
-        if (!$ignore_topic) {
+        // if we are not overwriting the page, check if the topic exists already
+        if (!$overwrite) {
             $topic_exists = Page::where('input_topic', $input_topic)->exists();
-            if ($topic_exists) return null; // do something here!
+            if ($topic_exists) {
+                throw new \Exception('Page Creation Error: Topic already exists!');
+            }
         }
 
         $generationConfig = new GenerationConfig(
@@ -369,7 +369,6 @@ if (!function_exists('PageCreator')) {
                 // If an error occurs, return an error message
                 // echo json_encode(['error' => $e->getMessage()]);
                 $attempts++;
-                dd('creator: '.$e);
                 sleep(5);
                 continue;
             }

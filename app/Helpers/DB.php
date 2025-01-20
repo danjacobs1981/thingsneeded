@@ -39,8 +39,9 @@ if (!function_exists('PageInserter')) {
             PageTranslation::create(['page_id' => $page_id, 'lang_id' => 1, 'title' => $result->title, 'introduction' => $result->introduction, 'conclusion' => $result->conclusion]);
         } else {
             $existing_slug = Page::where('id', $existing_id)->pluck('slug')->first();
+            $existing_image = Page::where('id', $existing_id)->pluck('image')->first();
             Page::where('id', $existing_id)->delete();
-            $page_insert = Page::create(['id' => $existing_id, 'input_topic' => $result->input_topic, 'input_prompt' => $result->input_prompt, 'slug' => $existing_slug, 'category_id' => $category_insert->id, 'author_id' => $author_id, 'reading_time' => $result->reading_time, 'batch' => $batch, 'gemini_model' => $result->gemini_model]);
+            $page_insert = Page::create(['id' => $existing_id, 'input_topic' => $result->input_topic, 'input_prompt' => $result->input_prompt, 'slug' => $existing_slug, 'category_id' => $category_insert->id, 'author_id' => $author_id, 'image' => $existing_image, 'reading_time' => $result->reading_time, 'batch' => $batch, 'gemini_model' => $result->gemini_model]);
             $page_id = $page_insert->id;
             PageTranslation::create(['page_id' => $page_id, 'lang_id' => 1, 'title' => $result->title, 'introduction' => $result->introduction, 'conclusion' => $result->conclusion]);
         }

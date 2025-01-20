@@ -11,15 +11,17 @@ class ProcessTranslatePage implements ShouldQueue
 
     public $timeout = 0;
 
-    public $page_ids;
+    public $page_id;
+    public $amount;
 
     /**
      * Create a new job instance.
      */
-    public function __construct($page_ids)
+    public function __construct($page_id, $amount)
     {
 
-        $this->page_ids = $page_ids;
+        $this->page_id = $page_id;
+        $this->amount = $amount;
 
     }
 
@@ -29,9 +31,9 @@ class ProcessTranslatePage implements ShouldQueue
     public function handle(): void
     {
 
-        foreach ($this->page_ids as $id) {
-            PageTranslator($id, true);
-            sleep(2);
+        PageTranslator($this->page_id, true); // page id, force overwrite
+        if ($this->amount > 1) {
+            sleep(10);
         }
 
     }

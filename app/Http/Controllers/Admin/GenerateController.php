@@ -41,13 +41,13 @@ class GenerateController extends Controller
                 $request->prompt = null;
                 $request->topic = Page::where('id', $existing_id)->pluck('input_topic')->first();
                 if (!$request->topic) {
-                    dd('page not exist');
+                    return 'Page does not exist.';
                 }
             } else if (!$request->topic) {
-                dd('no topic fail');
+                return 'A topic must be entered.';
             }
 
-            ProcessGeneratePage::dispatch($request->topic, $request->prompt, $existing_id);
+            ProcessGeneratePage::dispatch($request->topic, $request->prompt, $existing_id, 0); // topic, further prompt, existing id, batch
 
             return 'Page will be created.';
 
@@ -59,9 +59,22 @@ class GenerateController extends Controller
                 $amount = $request->amount;
             }
 
-            ProcessGenerateBatch::dispatch($amount, $request->prompt);
+            $ideas_data = IdeaGenerator($amount, $request->prompt); // gemini generates some ideas
 
-            return 'Page(s) will be created.';
+            if ($ideas_data) {
+
+                foreach($ideas_data->ideas as $input_topic) {
+
+                    ProcessGeneratePage::dispatch($input_topic->idea, null, false, 1); // topic, further prompt, existing id, batch
+                }
+
+            } else {
+
+                return 'Error: Gemini failed to return ideas!';
+
+            }
+
+            return 'A batch of '.$amount.' page(s) will be created.';
 
         }
 
