@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::group([
     'namespace' => 'App\Http\Controllers'
 ], function(){
@@ -65,7 +61,6 @@ Route::group([
     ], function() {
 
         Route::get('/', 'HomeController@show')->name('home');
-        //Route::get('/about', 'GeneralController@about')->name('about');
         Route::get('/privacy', 'GeneralController@privacy')->name('privacy');
         Route::get('/search', 'SearchController@show')->name('search');
         Route::get('/category/{slug}', 'CategoryController@show')->name('category');
@@ -75,7 +70,6 @@ Route::group([
     });
 
     // ajax
-    // bring products through with ajax?
 
 });
 
