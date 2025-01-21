@@ -29,11 +29,19 @@ class ImageController extends Controller
 
         $ids = array_map( 'intval', array_filter( explode(',', $request->id), 'is_numeric' ) );
 
-        foreach ($ids as $id) {
-            ProcessImagePage::dispatch($id, count($ids));
-        }
+        if (config('app.env') === 'local') {
 
-        return count($ids).' images will be created.';
+            return 'Image creation should only happen on live site.';
+
+        } else {
+
+            foreach ($ids as $id) {
+                ProcessImagePage::dispatch($id, count($ids))->onQueue('images');
+            }
+
+            return count($ids).' images will be created.';
+
+        }
 
     }
 

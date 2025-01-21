@@ -18,6 +18,10 @@ class PagesController extends Controller
         $pageModel = new Page;
         $pages = $pageModel->pages()->get();
 
+        // comma sep list of no images
+        // $pages = $pageModel->pages()->where('image', 0)->pluck('id');
+        // dd($pages->implode(','));
+
         //dd($pages);
 
         return view('layout.admin.page.pages', [

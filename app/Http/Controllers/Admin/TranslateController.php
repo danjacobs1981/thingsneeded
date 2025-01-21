@@ -30,7 +30,7 @@ class TranslateController extends Controller
         $ids = array_map( 'intval', array_filter( explode(',', $request->id), 'is_numeric' ) );
 
         foreach ($ids as $id) {
-            ProcessTranslatePage::dispatch($id, count($ids));
+            ProcessTranslatePage::dispatch($id, count($ids))->onQueue('translations');
         }
 
         return count($ids).' pages will be translated.';

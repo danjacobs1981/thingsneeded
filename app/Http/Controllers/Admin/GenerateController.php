@@ -47,7 +47,7 @@ class GenerateController extends Controller
                 return 'A topic must be entered.';
             }
 
-            ProcessGeneratePage::dispatch($request->topic, $request->prompt, $existing_id, 0); // topic, further prompt, existing id, batch
+            ProcessGeneratePage::dispatch($request->topic, $request->prompt, $existing_id, 0)->onQueue('pages'); // topic, further prompt, existing id, batch
 
             return 'Page will be created.';
 
@@ -65,7 +65,7 @@ class GenerateController extends Controller
 
                 foreach($ideas_data->ideas as $input_topic) {
 
-                    ProcessGeneratePage::dispatch($input_topic->idea, null, false, 1); // topic, further prompt, existing id, batch
+                    ProcessGeneratePage::dispatch($input_topic->idea, null, false, 1)->onQueue('pages'); // topic, further prompt, existing id, batch
                 }
 
             } else {
