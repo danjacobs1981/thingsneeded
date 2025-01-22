@@ -33,7 +33,7 @@ class TranslateController extends Controller
             ProcessTranslatePage::dispatch($id, count($ids))->onQueue('translations');
         }
 
-        return count($ids).' pages will be translated.';
+        return count($ids).' pages will be translated. Run - queue:work --queue=translations or queue:work --queue=pages,translations,images';
 
 
     }

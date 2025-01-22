@@ -46,11 +46,10 @@
                     </ul>
                 </div>
                 @if($page->image)
-                    {{-- <img fetchpriority="high" class="mt-3 md:mt-5 lg:h-[382px] block lg:rounded-md object-cover" width="800" height="382" src="{{ asset('storage/images/hero/'.$page->slug.'.jpg') }}" alt="{{ $page->title }}"> --}}
                     <picture>
                         <source srcset="{{ asset('storage/images/hero/'.$page->slug.'.webp') }}" type="image/webp">
                         <source srcset="{{ asset('storage/images/hero/'.$page->slug.'.jpg') }}" type="image/jpeg">
-                        <img fetchpriority="high" class="mt-3 md:mt-5 lg:h-[382px] block lg:rounded-md object-cover" width="800" height="382" src="{{ asset('storage/images/hero/'.$page->slug.'.jpg') }}" alt="{{ $page->title }}">
+                        <img fetchpriority="high" class="mt-3 md:mt-5 lg:h-[382px] block lg:rounded-md object-cover" width="800" height="382" src="{{ asset('storage/images/hero/'.$page->slug.'.jpg') }}" alt="Image representing {{ $page->title }}">
                     </picture>
                 @else
                     <hr class="mt-3 md:mt-5 border-t border-slate-300" />

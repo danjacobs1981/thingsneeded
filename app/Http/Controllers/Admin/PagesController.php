@@ -19,8 +19,8 @@ class PagesController extends Controller
         $pages = $pageModel->pages()->get();
 
         // comma sep list of no images
-        // $pages = $pageModel->pages()->where('image', 0)->pluck('id');
-        // dd($pages->implode(','));
+        $pages = $pageModel->pages()->where('image', 0)->pluck('id');
+        dd($pages->implode(','));
 
         //dd($pages);
 

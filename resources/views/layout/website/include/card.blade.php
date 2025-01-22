@@ -5,13 +5,13 @@
                 <picture>
                     <source srcset="{{ asset('storage/images/card/'.$item->slug.'.webp') }}" type="image/webp">
                     <source srcset="{{ asset('storage/images/card/'.$item->slug.'.jpg') }}" type="image/jpeg">
-                    <img loading="lazy" class="w-full block object-cover h-44" width="380" height="176" src="{{ asset('storage/images/card/'.$item->slug.'.jpg') }}" alt="{{ $item->title }}">
+                    <img loading="lazy" class="w-full block object-cover h-44 min-w-80" height="176" src="{{ asset('storage/images/card/'.$item->slug.'.jpg') }}" alt="Image representing {{ $item->title }}">
                 </picture>
             @else
                 <picture>
                     <source srcset="{{ asset('storage/images/card/placeholder.webp') }}" type="image/webp">
                     <source srcset="{{ asset('storage/images/card/placeholder.jpg') }}" type="image/jpeg">
-                    <img loading="lazy" class="w-full block object-cover h-44" width="380" height="176" src="{{ asset('storage/images/card/placeholder.jpg') }}" alt="Placeholder image">
+                    <img loading="lazy" class="w-full block object-cover h-44 min-w-80" height="176" src="{{ asset('storage/images/card/placeholder.jpg') }}" alt="Placeholder image">
                 </picture>
             @endif
         </div>

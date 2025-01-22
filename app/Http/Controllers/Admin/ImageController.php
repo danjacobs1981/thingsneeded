@@ -39,7 +39,7 @@ class ImageController extends Controller
                 ProcessImagePage::dispatch($id, count($ids))->onQueue('images');
             }
 
-            return count($ids).' images will be created.';
+            return count($ids).' images will be created. Run - queue:work --queue=images or queue:work --queue=pages,translations,images';
 
         }
 
