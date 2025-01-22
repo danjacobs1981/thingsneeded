@@ -1,7 +1,13 @@
 <header>
     <div class="container relative h-[66px] flex items-center">
-        <a href="{{ route('home') }}" class="block absolute top-0 left-0 px-4 sm:px-8 xl:px-4 2xl:px-8 min-h-[72px]" title="{{ __('common.topbar.logo') }}">
-            <img fetchpriority="high" src="{{ asset('storage/logo.svg') }}" width="312" height="72" class="object-cover object-left w-16 [@media(min-width:474px)]:w-auto min-h-[72px]" alt="{{ config('app.name') }}" />
+        <a href="{{ route('home') }}" class="flex items-center absolute top-0 left-0 px-4 sm:px-8 xl:px-4 2xl:px-8 min-h-[72px] me-28" title="{{ __('common.topbar.logo') }}">
+            <img fetchpriority="high" src="{{ asset('storage/logo.svg') }}" width="68" height="72" class="min-h-[72px] max-h-[72px] me-1.5" alt="{{ config('app.name') }}" />
+            <div class="flex flex-wrap leading-none text-lg sm:text-xl md:text-2xl">
+                <strong class="text-teal-500 font-extrabold mb-0.5">Things</strong>
+                <span>
+                    <span class="font-semibold">Needed</span><span class="text-slate-500 text-sm md:text-base">.com</span>
+                </span>
+            </div>
         </a>
         <ul class="h-[66px] ms-auto flex items-center [&>li]:ms-6">
             <li>
