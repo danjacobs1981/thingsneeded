@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'title' => 'Trouvez <em>toutes</em> les <span class="font-extrabold"><span class="text-teal-500 inline-block pe-1">Things</span>Needed</span>',
+    'title' => 'Trouvez <em>toutes</em> les <span class="text-teal-500 inline-block font-extrabold">Things</span> Needed',
     'recently' => 'Derniers articles ajoutés',
 ];

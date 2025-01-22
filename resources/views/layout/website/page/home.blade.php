@@ -2,7 +2,7 @@
 
 @section('content')
     <header class="bg-slate-100 py-8">
-        <h1 class="text-center text-slate-950 text-3xl md:text-4xl xl:text-5xl font-semibold text-teal-500 !text-slate-800 ps-1 pe-1">
+        <h1 class="text-center text-slate-950 text-3xl md:text-4xl xl:text-5xl font-semibold text-teal-500 !text-slate-800">
             {!! __('home.title') !!}
         </h1>
         <div class="container mt-6 xl:mt-8">
