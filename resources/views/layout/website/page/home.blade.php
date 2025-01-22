@@ -10,7 +10,7 @@
         </div>
     </header>
     <div class="container mt-8 xl:mt-10">
-        <a href="https://www.amazon.co.uk/dp/B09P844HWW?tag=danjacocrea-21" target="_blank">amazon</a>
+        <a href="https://www.amazon.fr/dp/B09P844HWW?tag=danjacobscreations-21" target="_blank">amazon</a>
         @if(!$pages->isEmpty())
             <section>
                 <div class="container grid gap-8 xl:gap-10">
