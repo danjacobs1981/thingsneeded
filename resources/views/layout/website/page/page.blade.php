@@ -38,7 +38,7 @@
                     </h1>
                     <ul class="mx-auto sm:marker:text-slate-400 sm:list-disc sm:space-x-5 items-center flex flex-col sm:flex-row text-slate-600">
                         <li class="list-none sm:pe-3">
-                            {{ __('page.author') }} {{ $page->author()->name }}
+                            {{ __('common.page.author') }} {{ $page->author()->name }}
                         </li>
                         <li>
                             {{ $carbon::parse($page->updated_at)->translatedFormat('j F, Y') }}
@@ -49,14 +49,14 @@
                     <picture>
                         <source srcset="{{ asset('storage/images/hero/'.$page->slug.'.webp') }}" type="image/webp">
                         <source srcset="{{ asset('storage/images/hero/'.$page->slug.'.jpg') }}" type="image/jpeg">
-                        <img fetchpriority="high" class="mt-3 md:mt-5 lg:h-[382px] block lg:rounded-md object-cover" width="800" height="382" src="{{ asset('storage/images/hero/'.$page->slug.'.jpg') }}" alt="Image representing {{ $page->title }}">
+                        <img fetchpriority="high" class="mt-3 md:mt-5 lg:h-[382px] block lg:rounded-md object-cover" width="800" height="382" src="{{ asset('storage/images/hero/'.$page->slug.'.jpg') }}" alt="{{ __('common.image.representing', ['image' => strtolower($page->title)]) }}">
                     </picture>
                 @else
                     <hr class="mt-3 md:mt-5 border-t border-slate-300" />
                 @endif
                 <div class="flex items-center justify-between p-3">
                     <span>
-                        {{ __('page.read', ['minute' => $page->reading_time]) }}
+                        {{ __('common.page.read', ['minute' => $page->reading_time]) }}
                     </span>
                     <ul class="grid grid-cols-4 gap-4 [&_svg]:h-6 [&_svg]:w-6 lg:[&_svg]:h-7 lg:[&_svg]:w-7">
                         @include('layout.website.include.share')
@@ -112,7 +112,7 @@
                                                 </strong>
                                             </span>
                                             <span class="ms-auto inline-block leading-[1.125] bg-orange-600 group-hover:bg-orange-700 text-white px-2 py-1.5 rounded-md text-center text-base font-medium">
-                                                {{ __('page.amazon.buy') }}
+                                                {{ __('common.page.amazon.buy') }}
                                             </span>
                                         </a>
                                     </div>
@@ -121,7 +121,7 @@
                         </ol>
                         @if($type->id === 1)
                             <p class="text-center text-slate-500">
-                                {{ __('page.legal') }}
+                                {{ __('common.page.legal') }}
                             </p>
                         @endif
                     </section>
@@ -129,7 +129,7 @@
             @endforeach
         </div>
         @if(!$tips->isEmpty())
-            <section id="{{ __('page.tips.id') }}" class="bg-amber-50 py-10 mt-10 xl:mt-12">
+            <section id="{{ __('common.page.tips.id') }}" class="bg-amber-50 py-10 mt-10 xl:mt-12">
                 <div class="container">
                     @php
                         $cols = '';
@@ -158,12 +158,12 @@
             </section>
         @endif
         @if(!$sections->isEmpty())
-            <section id="{{ __('page.steps.id') }}" class="bg-teal-100 py-10 {{ $tips->isEmpty() ? 'mt-10 xl:mt-14' : 'mt-8 xl:mt-10' }} relative overflow-x-hidden">
+            <section id="{{ __('common.page.steps.id') }}" class="bg-teal-100 py-10 {{ $tips->isEmpty() ? 'mt-10 xl:mt-14' : 'mt-8 xl:mt-10' }} relative overflow-x-hidden">
                 <div class="container lg:max-w-[800px] lg:px-0 grid gap-8">
                     <img src="{{ asset('storage/icons/steps.svg') }}" width="600" height="600" class="hidden 2xl:block absolute -top-28 -right-24" alt="Checklist" />
                     <img src="{{ asset('storage/icons/box-type-2.svg') }}" width="360" height="360" class="hidden 2xl:block absolute -bottom-0 -left-32" alt="Box" />
                     <h2 class="text-center text-slate-950 text-2xl md:text-3xl xl:text-4xl font-bold capitalize">
-                        {{ __('page.steps.title') }}
+                        {{ __('common.page.steps.title') }}
                     </h2>
                     @php
                         $total = 0;
@@ -226,19 +226,19 @@
                     </ul>
                 </section>
                 <p class="mt-6 md:mt-8 text-slate-500">
-                    {{ __('page.disclaimer') }}
+                    {{ __('common.page.disclaimer') }}
                 </p>
                 <p class="text-slate-500">
-                    {{ __('page.amazon.disclaimer') }}
+                    {{ __('common.page.amazon.disclaimer') }}
                 </p>
             </footer>
         </div>
     </article>
     @if(!$related->isEmpty())
-        <aside id="{{ __('page.related.id') }}" class="bg-slate-100 py-10 mt-8 xl:mt-10">
+        <aside id="{{ __('common.page.related.id') }}" class="bg-slate-100 py-10 mt-8 xl:mt-10">
             <div class="container grid gap-8 xl:gap-10">
                 <h2 class="text-center text-slate-950 text-2xl md:text-3xl lg:text-4xl font-bold capitalize">
-                    {{ __('page.related.title') }}
+                    {{ __('common.page.related.title') }}
                 </h2>
                 @php
                     $cols = '';

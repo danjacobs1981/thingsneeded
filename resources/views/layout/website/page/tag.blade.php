@@ -9,7 +9,7 @@
     </header>
     <div class="container mt-8 xl:mt-10">
         <p class="text-base font-medium md:text-xl xl:text-2xl text-center text-teal-600 !text-slate-800">
-            {!! __('tag.intro', ['count' => $pages->count(), 'tag' => $tag->tag]) !!}
+            {!! __('common.tag.intro', ['count' => $pages->count(), 'tag' => $tag->tag]) !!}
         </p>
         @if(!$pages->isEmpty())
             <section class="mt-8 xl:mt-10">
