@@ -3,14 +3,14 @@
     return [
         'website' => [
             'name' => 'Things Needed',
-            'url' => 'thingsneeded.com',
-            'url_full' => 'https://thingsneeded.com'
+            'url' => 'things-needed.com',
+            'url_full' => 'https://things-needed.com'
         ],
         'head' => [
-            'title' => 'ThingsNeeded.com',
+            'title' => 'Things-Needed.com',
             'meta_title' => 'Things Needed',
             'meta_description' => 'Things Needed',
             'meta_keywords' => '',
-            'link_canonical' => 'https://thingsneeded.com'
+            'link_canonical' => 'https://things-needed.com'
         ],
     ];

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'ThingsNeeded.com'),
+    'name' => env('APP_NAME', 'Things-Needed.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://thingsneeded.com'),
+    'url' => env('APP_URL', 'https://things-needed.com'),
 
     /*
     |--------------------------------------------------------------------------

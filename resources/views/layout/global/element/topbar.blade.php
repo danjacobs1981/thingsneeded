@@ -5,7 +5,7 @@
             <div class="flex flex-wrap leading-none text-lg sm:text-xl md:text-2xl">
                 <strong class="text-teal-500 font-extrabold mb-0.5">Things</strong>
                 <span>
-                    <span class="font-semibold">Needed</span><span class="text-slate-500 text-sm md:text-base">.com</span>
+                    <span class="font-semibold">-Needed</span><span class="text-slate-500 text-sm md:text-base">.com</span>
                 </span>
             </div>
         </a>
