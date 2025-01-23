@@ -6,10 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Models\Page;
 
+use Config;
+
 class SearchController extends Controller
 {
     public function show()
     {
+
+        // set head items
+        Config::set('constants.head.title', 'Search '.config('app.name'));
+        Config::set('constants.head.meta_title', 'Search '.config('app.name'));
+        Config::set('constants.head.link_canonical', config('constants.website.url_full').'/en/search');
 
         if (request()->has('q') && request()->filled('q')) {
 

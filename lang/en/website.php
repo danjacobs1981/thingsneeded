@@ -46,11 +46,11 @@ return [
     ],
 
     'category' => [
-        'intro' => 'All :count pages in the <em class="text-teal-600 font-semibold">:category</em> category.',
+        'intro' => 'All :count articles in the <em class="text-teal-600 font-semibold">:category</em> category.',
     ],
 
     'tag' => [
-        'intro' => 'All :count pages featuring the <em class="text-teal-600 font-semibold">:tag</em> tag.',
+        'intro' => 'All :count articles featuring the <em class="text-teal-600 font-semibold">:tag</em> tag.',
     ],
 
     'search' => [

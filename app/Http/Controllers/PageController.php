@@ -47,7 +47,6 @@ class PageController extends Controller
         Config::set('constants.head.meta_description', $page->conclusion);
         Config::set('constants.head.meta_keywords', $tags->pluck('tag')->implode(',')); // comma sep
         Config::set('constants.head.link_canonical', config('constants.website.url_full').'/en/'.$page->slug.'/');
-        // may need to improve the "hreflang" loop in head
 
         return view('layout.website.page.page', [
             'page' => $page,
