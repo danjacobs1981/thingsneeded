@@ -9,13 +9,17 @@ return [
     ],
 
     'footer' => [
-        'privacy' => 'Politica sulla privacy',
+        'privacy' => 'Informativa sulla privacy',
         'terms' => 'Termini e condizioni',
     ],
 
     'home' => [
         'title' => 'Trova <em>tutte</em> le <span class="text-teal-500 inline-block font-extrabold">Things</span> Needed',
         'recently' => 'Articoli aggiunti di recente',
+    ],
+
+    'privacy' => [
+        'title' => 'Informativa sulla privacy',
     ],
 
     'page' => [

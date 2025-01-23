@@ -18,6 +18,10 @@ return [
         'recently' => 'Últimos artículos agregados',
     ],
 
+    'privacy' => [
+        'title' => 'Política de privacidad',
+    ],
+
     'page' => [
         'read' => 'Lectura de :minute minutos',
         'author' => 'Recopilado por',

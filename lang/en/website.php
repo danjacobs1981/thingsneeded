@@ -18,6 +18,10 @@ return [
         'recently' => 'Recently added articles',
     ],
 
+    'privacy' => [
+        'title' => 'Privacy Policy',
+    ],
+
     'page' => [
         'read' => ':minute minute read',
         'author' => 'Collated by',

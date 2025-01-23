@@ -3,13 +3,13 @@
 @section('content')
 
     <header class="bg-slate-100 py-8">
-        <h1 class="text-center text-slate-950 text-3xl md:text-4xl xl:text-5xl font-extrabold capitalize">
+        <h1 class="text-center text-slate-950 text-3xl md:text-4xl xl:text-5xl font-extrabold">
             {{ $category->category }}
         </h1>
     </header>
     <div class="container mt-8 xl:mt-10">
         <p class="text-base font-medium md:text-xl xl:text-2xl text-center">
-            {!! __('common.category.intro', ['count' => $pages->count(), 'category' => $category->category]) !!}
+            {!! __('website.category.intro', ['count' => $pages->count(), 'category' => $category->category]) !!}
         </p>
         @if(!$pages->isEmpty())
             <section class="mt-8 xl:mt-10">

@@ -18,6 +18,10 @@ return [
         'recently' => 'Neueste Artikel',
     ],
 
+    'privacy' => [
+        'title' => 'Datenschutzerklärung',
+    ],
+
     'page' => [
         'read' => ':minute minuten lesezeit',
         'author' => 'Zusammengestellt von',

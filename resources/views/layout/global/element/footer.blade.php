@@ -9,8 +9,8 @@
                     </a>
                     <ul class="flex marker:text-slate-400 list-disc space-x-5 mt-2 sm:mt-0">
                         <li class="list-none pe-3 sm:list-disc">
-                            <a href="{{ LaravelLocalization::localizeUrl(route('privacy')) }}" class="hover:underline" title="{{ __('common.footer.privacy') }}">
-                                {{ __('common.footer.privacy') }}
+                            <a href="{{ LaravelLocalization::localizeUrl(route('privacy')) }}" class="hover:underline" title="{{ __('website.footer.privacy') }}">
+                                {{ __('website.footer.privacy') }}
                             </a>
                         </li>
                     </ul>

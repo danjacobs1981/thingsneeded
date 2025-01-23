@@ -2,8 +2,8 @@
 
 @section('content')
     <header class="bg-slate-100 py-8">
-        <h1 class="text-center text-slate-950 text-3xl md:text-4xl xl:text-5xl font-extrabold capitalize">
-            {{ __('common.search.title') }}
+        <h1 class="text-center text-slate-950 text-3xl md:text-4xl xl:text-5xl font-extrabold">
+            {{ __('website.search.title') }}
         </h1>
         <div class="container mt-6 xl:mt-8">
             @include('layout.website.include.search')
@@ -28,7 +28,7 @@
                     </div>
                 @else
                     <p class="text-center">
-                        {{ __('common.search.noresults') }}
+                        {{ __('website.search.noresults') }}
                     </p>
                 @endif
             </section>
