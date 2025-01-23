@@ -21,7 +21,7 @@ class HomeController extends Controller
         // set head items
         Config::set('constants.head.title', 'Welcome to '.config('app.name'));
         Config::set('constants.head.meta_title', 'Welcome to '.config('app.name'));
-        Config::set('constants.head.link_canonical', config('constants.website.url_full').'/en/');
+        Config::set('constants.head.link_canonical', config('constants.website.url_full').'/en');
 
         return view('layout.website.page.home', [
             'pages' => $pages,
