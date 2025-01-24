@@ -334,7 +334,7 @@ if (!function_exists('PageCreator')) {
 
                         ".$input_prompt."
 
-                        Create an introduction to the page in a concise, naturally written, single paragraph.
+                        Create an introduction to the page in a concise, naturally written, single paragraph. Avoid using the word 'daunting'.
 
                         Please generate a list of all the things I would need for the above topic.
 
@@ -354,7 +354,7 @@ if (!function_exists('PageCreator')) {
 
                         Add between 3 - 10 simple but relevant tags that cover all aspects of the topic (they must be relevant!). Tags to be lowercase unless it's an initialism.
 
-                        Write a paragraph or two as a conclusion.
+                        Write a paragraph or two as a conclusion. Avoid using the word 'daunting'.
 
                         In minutes, specify the estimated time it would take to read the page that's been created.
 

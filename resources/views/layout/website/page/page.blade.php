@@ -102,10 +102,10 @@
                             $cols = 'md:grid-cols-2 xl:grid-cols-3';
                         }
                     @endphp
-                    <ul class="grid gap-4 {{ $cols }} xl:gap-9">
+                    <ul class="grid gap-6 {{ $cols }} xl:gap-9">
                         @foreach($tips as $tip)
                             <li class="flex items-start w-full max-w-[500px] mx-auto">
-                                <img src="{{ asset('storage/icons/bulb.svg') }}" width="70" height="70" alt="Tip" />
+                                <img src="{{ asset('storage/icons/bulb.svg') }}" width="70" height="70" alt="Tip" class="max-w-12 max-h-12 lg:max-w-full lg:max-h-full relative -top-0.5 me-0.5" />
                                 <div>
                                     <h3 class="text-slate-950 text-lg !leading-tight md:text-xl lg:text-2xl font-semibold">
                                         {{$tip->title}}
