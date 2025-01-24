@@ -23,6 +23,7 @@
     @foreach ($pages as $item)
         <url>
             <loc>{{ config('app.url').'/en/'.$item->slug }}</loc>
+            <lastmod>{{ $item->updated_at->format('Y-m-d') }}</lastmod>
             @if($item->translated)
                 @foreach ($languages as $language)
                     <xhtml:link rel="alternate" hreflang="{{ $language->code }}" href="{{ config('app.url').'/'.$language->code.'/'.$item->slug }}" />
@@ -33,6 +34,7 @@
             @foreach ($languages->where('id', '!=', 1) as $language)
                 <url>
                     <loc>{{ config('app.url').'/'.$language->code.'/'.$item->slug }}</loc>
+                    <lastmod>{{ $item->updated_at->format('Y-m-d') }}</lastmod>
                     @foreach ($languages as $language)
                         <xhtml:link rel="alternate" hreflang="{{ $language->code }}" href="{{ config('app.url').'/'.$language->code.'/'.$item->slug }}" />
                     @endforeach
