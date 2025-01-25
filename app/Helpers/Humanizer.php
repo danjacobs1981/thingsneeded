@@ -34,9 +34,9 @@ if (!function_exists('PageHumanizer')) {
         // set page humanized to 0 (in case anything fails)
         $page->update(['humanized' => 0]);
 
-        $introduction = Humanizer(PageTranslation::where('lang_id', 1)->where('page_id', $page_id)->value('introduction'));
+        $introduction = Humanizer(PageTranslation::where('lang_id', 1)->where('page_id', $page_id)->value('org_introduction'));
         sleep(2);
-        $conclusion = Humanizer(PageTranslation::where('lang_id', 1)->where('page_id', $page_id)->value('conclusion'));
+        $conclusion = Humanizer(PageTranslation::where('lang_id', 1)->where('page_id', $page_id)->value('org_conclusion'));
 
         PageTranslation::where('lang_id', 1)->where('page_id', $page_id)->update(['introduction' => $introduction, 'conclusion' => $conclusion]);
 
@@ -54,7 +54,7 @@ if (!function_exists('Humanizer')) {
     function Humanizer($input) {
 
         $email = 'danjacobs@gmail.com'; // TODO: enter AI-Text-Humanizer.com account email here
-        $password = 'PASSWORD'; // TODO: enter AI-Text-Humanizer.com account password here
+        $password = '33AR!ZBvpyNqMRH'; // TODO: enter AI-Text-Humanizer.com account password here
         $text = $input; // TODO: place your input text here.
 
         $ch = curl_init( 'https://ai-text-humanizer.com/api.php' );

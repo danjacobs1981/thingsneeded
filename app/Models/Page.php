@@ -88,7 +88,7 @@ class PageTranslation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['page_id', 'lang_id', 'title', 'introduction', 'conclusion'];
+    protected $fillable = ['page_id', 'lang_id', 'title', 'introduction', 'conclusion', 'org_introduction', 'org_conclusion'];
 
     public $timestamps = false;
 
