@@ -5,17 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Jobs\ProcessTranslatePage;
+use App\Jobs\ProcessHumanizePage;
 
 use App\Models\Page;
+use App\Models\PageTranslation; // TEMP
 
 
-class TranslateController extends Controller
+class HumanizeController extends Controller
 {
 
     public function page() {
 
-        return view('layout.admin.page.translate-page');
+        return view('layout.admin.page.humanize-page');
 
     }
 
@@ -30,10 +31,10 @@ class TranslateController extends Controller
         $ids = array_map( 'intval', array_filter( explode(',', $request->id), 'is_numeric' ) );
 
         foreach ($ids as $id) {
-            ProcessTranslatePage::dispatch($id, count($ids))->onQueue('translations');
+            ProcessHumanizePage::dispatch($id, count($ids))->onQueue('humanizations');
         }
 
-        return count($ids).' pages will be translated. Run - queue:work --queue=translations or queue:work --queue=pages,humanizations,translations,images';
+        return count($ids).' pages will be humanized. Run - queue:work --queue=humanizations or queue:work --queue=pages,humanizations,translations,images';
 
 
     }

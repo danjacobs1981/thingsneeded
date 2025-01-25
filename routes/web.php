@@ -34,6 +34,9 @@ Route::group([
         Route::get('/pages/generate/batch', 'Admin\GenerateController@batch')->name('generate.batch');
         Route::post('/pages/generate/start', 'Admin\GenerateController@start')->name('generate.start');
 
+        Route::get('/pages/humanize', 'Admin\HumanizeController@page')->name('humanize.page');
+        Route::post('/pages/humanize/start', 'Admin\HumanizeController@start')->name('humanize.start');
+
         Route::get('/pages/translate', 'Admin\TranslateController@page')->name('translate.page');
         Route::post('/pages/translate/start', 'Admin\TranslateController@start')->name('translate.start');
 

@@ -334,9 +334,11 @@ if (!function_exists('PageCreator')) {
 
                         ".$input_prompt."
 
-                        Create an introduction to the page in a concise, naturally written, single paragraph. Avoid using the word 'daunting'.
+                        Your persona should be an expert in this topic, with a tone that is informal and engaging. You are writing in 'first person' and can include first person experiences.
 
-                        Please generate a list of all the things I would need for the above topic.
+                        Create an introduction to the page.
+
+                        Please generate a list of all the things a person would need for the above topic.
 
                         Each list item should be unique.
 
@@ -354,7 +356,7 @@ if (!function_exists('PageCreator')) {
 
                         Add between 3 - 10 simple but relevant tags that cover all aspects of the topic (they must be relevant!). Tags to be lowercase unless it's an initialism.
 
-                        Write a paragraph or two as a conclusion. Avoid using the word 'daunting'.
+                        Write a sentence or two as a conclusion. Try to finish with an expertise tip.
 
                         In minutes, specify the estimated time it would take to read the page that's been created.
 

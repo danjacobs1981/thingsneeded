@@ -49,7 +49,7 @@ class GenerateController extends Controller
 
             ProcessGeneratePage::dispatch($request->topic, $request->prompt, $existing_id, 0)->onQueue('pages'); // topic, further prompt, existing id, batch
 
-            return 'Page will be created. Run - queue:work --queue=pages or queue:work --queue=pages,translations,images';
+            return 'Page will be created. Run - queue:work --queue=pages or queue:work --queue=pages,humanizations,translations,images';
 
         } else if($request->type == "batch") {
 
@@ -74,7 +74,7 @@ class GenerateController extends Controller
 
             }
 
-            return 'A batch of '.$amount.' page(s) will be created. Run - queue:work --queue=pages or queue:work --queue=pages,translations,images';
+            return 'A batch of '.$amount.' page(s) will be created. Run - queue:work --queue=pages or queue:work --queue=pages,humanizations,translations,images';
 
         }
 

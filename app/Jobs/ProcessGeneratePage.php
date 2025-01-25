@@ -52,8 +52,10 @@ class ProcessGeneratePage implements ShouldQueue
             sleep(2);
             TagTranslator(false); // gemini translates any tags not translated yet
             sleep(2);
+            PageHumanizer($page_id, true); // humanization of a page - forced because there is new content, it needs humanizing
+            sleep(2);
             PageTranslator($page_id, true); // gemini translation of a page - forced because there is new content, it needs translating
-            sleep(10);
+            sleep(2);
             PageImager($page_id, false); // image creation for page - not forced, because if it's a page overwrite, still keep the image (if it exists)
             if ($this->batch) {
                 sleep(10);
