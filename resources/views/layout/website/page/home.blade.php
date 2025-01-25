@@ -13,6 +13,14 @@
         @if(!$pages->isEmpty())
             <section>
                 <div class="container grid gap-8 xl:gap-10">
+                    <div>
+                        <p class="font-medium xl:text-xl mb-3">
+                            Embarking on a new adventure, whether it's learning a new skill or tackling a home improvement project, can be exciting but also challenging. Things-Needed.com takes the guesswork out of preparation by providing curated lists of essential tools, materials, and resources.
+                        </p>
+                        <p class="font-semibold xl:text-2xl text-teal-600">
+                            Discover everything you need to confidently begin and complete your next endeavor!
+                        </p>
+                    </div>
                     <h2 class="text-center text-slate-950 text-2xl md:text-3xl lg:text-4xl font-bold">
                         {{ __('website.home.recently') }}
                     </h2>

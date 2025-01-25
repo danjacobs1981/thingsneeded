@@ -26,8 +26,6 @@ if (!function_exists('PageHumanizer')) {
 
             Log::channel('generate')->warning('PageHumanizer: Page ID '.$page_id.' - page already humanized (force = false)!');
             return;
-            // log instead?
-            // throw new \Exception('Translation: Page ID '.$page_id.' - page already translated (force = false)!');
 
         }
 
