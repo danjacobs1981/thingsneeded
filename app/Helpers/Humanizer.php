@@ -31,6 +31,8 @@ if (!function_exists('PageHumanizer')) {
 
         }
 
+        Log::channel('generate')->info('PageHumanizer: Page ID '.$page_id.' - starting humanizing!');
+
         // set page humanized to 0 (in case anything fails)
         $page->update(['humanized' => 0]);
 

@@ -29,6 +29,7 @@
         "files": [
             "app/Helpers/Gemini.php",
             "app/Helpers/DB.php",
+            "app/Helpers/Humanizer.php",
             "app/Helpers/Translator.php",
             "app/Helpers/Imager.php"
         ],
