@@ -8,21 +8,12 @@ use Illuminate\Http\Request;
 use App\Jobs\ProcessHumanizePage;
 
 use App\Models\Page;
-//use App\Models\PageTranslation;
 
 
 class HumanizeController extends Controller
 {
 
     public function page() {
-
-
-        // $pages = Page::pluck('id');
-        // foreach($pages as $page_id) {
-        //     $introduction = PageTranslation::where('lang_id', 1)->where('page_id', $page_id)->value('introduction');
-        //     $conclusion = PageTranslation::where('lang_id', 1)->where('page_id', $page_id)->value('conclusion');
-        //     PageTranslation::where('lang_id', 1)->where('page_id', $page_id)->update(['org_introduction' => $introduction, 'org_conclusion' => $conclusion]);
-        // }
 
         return view('layout.admin.page.humanize-page');
 
