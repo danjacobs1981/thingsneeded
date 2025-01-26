@@ -66,7 +66,7 @@
         </header>
         <div class="container mt-8 xl:mt-10">
             <p class="text-base font-medium md:text-xl xl:text-2xl">
-                {{$page->introduction}}
+                {{ $page->introduction }}
             </p>
             @foreach($types as $type)
                 @if(!$things->where('type_id', $type->id)->isEmpty())
@@ -167,7 +167,7 @@
         @endif
         <div class="container mt-8 xl:mt-10">
             <p class="md:text-xl">
-                {{$page->conclusion}}&nbsp; <span class="relative top-px inline-block w-4 h-4 bg-teal-500"></span>
+                {{ $page->conclusion }}&nbsp; <span class="relative top-px inline-block w-4 h-4 bg-teal-500"></span>
             </p>
             <footer class="grid gap-3 mt-8 md:mt-10">
                 @if(!$tags->isEmpty())

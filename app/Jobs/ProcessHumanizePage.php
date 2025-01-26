@@ -31,7 +31,10 @@ class ProcessHumanizePage implements ShouldQueue
     public function handle(): void
     {
 
-        PageHumanizer($this->page_id, true); // page id, force overwrite
+        $success = PageHumanizer($this->page_id, true); // page id, force overwrite
+        if($success) { // only translate if humanizing happened and it overwrote main
+            PageTranslator($page_id, true); // gemini translation of a page - forced because there is new content, it needs translating
+        }
         if ($this->amount > 1) {
             sleep(5);
         }
