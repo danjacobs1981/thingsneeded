@@ -25,12 +25,12 @@ class HumanizeController extends Controller
 
     public function start(Request $request) {
 
-        if (!$request->id) return dd('no id(s) entered');
+        if (!$request->id) return 'no id(s) entered';
 
         $ids = array_map( 'intval', array_filter( explode(',', $request->id), 'is_numeric' ) );
 
         foreach ($ids as $id) {
-            ProcessHumanizePage::dispatch($id, count($ids))->onQueue('humanizations');
+            ProcessHumanizePage::dispatch($id, count($ids), $request->introduction, $request->conclusion)->onQueue('humanizations');
         }
 
         return count($ids).' pages will be humanized. Run - queue:work --queue=humanizations or queue:work --queue=pages,humanizations,translations,images';

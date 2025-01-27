@@ -13,15 +13,19 @@ class ProcessHumanizePage implements ShouldQueue
 
     public $page_id;
     public $amount;
+    public $introduction;
+    public $conclusion;
 
     /**
      * Create a new job instance.
      */
-    public function __construct($page_id, $amount)
+    public function __construct($page_id, $amount, $introduction, $conclusion)
     {
 
         $this->page_id = $page_id;
         $this->amount = $amount;
+        $this->introduction = $introduction;
+        $this->conclusion = $conclusion;
 
     }
 
@@ -31,10 +35,7 @@ class ProcessHumanizePage implements ShouldQueue
     public function handle(): void
     {
 
-        $success = PageHumanizer($this->page_id, true); // page id, force overwrite
-        if($success) { // only translate if humanizing happened and it overwrote main
-            PageTranslator($page_id, true); // gemini translation of a page - forced because there is new content, it needs translating
-        }
+        PageHumanizer($this->page_id, $this->introduction, $this->conclusion); // page id, force overwrite
         if ($this->amount > 1) {
             sleep(5);
         }
