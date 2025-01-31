@@ -35,11 +35,12 @@ class SitemapController extends Controller
         ];
 
         $pages = Page::where('live', true)->get();
-        $categories = Category::get();
-        $tags = Tag::get();
+        // $categories = Category::get();
+        // $tags = Tag::get();
         $languages = Language::get();
 
-        $xml = view('sitemap', compact('general', 'pages', 'categories', 'tags', 'languages'))->render();
+        //$xml = view('sitemap', compact('general', 'pages', 'categories', 'tags', 'languages'))->render();
+        $xml = view('sitemap', compact('general', 'pages', 'languages'))->render();
 
         return response(trim($xml))->withHeaders([ // 'trim' is there to make sure no extra spaces - else xml would fail
             'content-type' => 'text/xml'
