@@ -52,7 +52,7 @@ class ProcessGeneratePage implements ShouldQueue
             sleep(2);
             TagTranslator(false); // gemini translates any tags not translated yet
             sleep(2);
-            PageHumanizer($page_id, true, true); // humanization of a page - forced because there is new content, it needs humanizing
+            PageHumanizer($page_id, true, true); // humanization of a page (intro and conc)
             sleep(2);
             PageTranslator($page_id, true); // gemini translation of a page - forced because there is new content, it needs translating
             sleep(2);

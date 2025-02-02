@@ -16,11 +16,11 @@
                     Generate Batch
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('humanize.page') }}">
                     Humanize Page
                 </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('translate.page') }}">
                     Translate Page

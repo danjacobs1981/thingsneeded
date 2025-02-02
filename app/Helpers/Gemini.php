@@ -334,11 +334,11 @@ if (!function_exists('PageCreator')) {
 
                         ".$input_prompt."
 
-                        Your persona should be an expert in this topic, with a tone that is informal and engaging. You are writing in 'first person' and can include first person experiences.
+                        Your persona should be an expert in this topic, with a tone that is informal and engaging.
 
                         Create an introduction to the page.
 
-                        Please generate a list of all the things a person would need for the above topic.
+                        Please generate a list of all the things someone would need for the above topic.
 
                         Each list item should be unique.
 

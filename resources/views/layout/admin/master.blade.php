@@ -3,7 +3,7 @@
 
     @include('layout.website.element.head')
 
-    <body>
+    <body class="flex flex-col h-screen text-base md:text-lg text-slate-800">
 
         @include('layout.global.element.topbar')
 

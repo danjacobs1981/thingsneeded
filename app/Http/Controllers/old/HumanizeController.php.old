@@ -29,6 +29,11 @@ class HumanizeController extends Controller
 
         $ids = array_map( 'intval', array_filter( explode(',', $request->id), 'is_numeric' ) );
 
+        // $pageModel = new Page;
+        // $ids = $pageModel->pages()->pluck('id');
+
+        //dd($ids);
+
         foreach ($ids as $id) {
             ProcessHumanizePage::dispatch($id, count($ids), $request->introduction, $request->conclusion)->onQueue('humanizations');
         }

@@ -29,13 +29,18 @@ Route::group([
         // Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 
         Route::get('/pages', 'Admin\PagesController@show')->name('pages');
+        Route::post('/pages/save', 'Admin\PagesController@save')->name('pages.save');
+
+        Route::get('/pages/edit/{slug}', 'Admin\PageController@show')->name('edit.page');
+        Route::post('/pages/save/{slug}', 'Admin\PageController@save')->name('save.page');
+        Route::post('/pages/humanize/{slug}', 'Admin\PageController@humanize')->name('humanize.page');
 
         Route::get('/pages/generate', 'Admin\GenerateController@page')->name('generate.page');
         Route::get('/pages/generate/batch', 'Admin\GenerateController@batch')->name('generate.batch');
         Route::post('/pages/generate/start', 'Admin\GenerateController@start')->name('generate.start');
 
-        Route::get('/pages/humanize', 'Admin\HumanizeController@page')->name('humanize.page');
-        Route::post('/pages/humanize/start', 'Admin\HumanizeController@start')->name('humanize.start');
+        // Route::get('/pages/humanize', 'Admin\HumanizeController@page')->name('humanize.page');
+        // Route::post('/pages/humanize/start', 'Admin\HumanizeController@start')->name('humanize.start');
 
         Route::get('/pages/translate', 'Admin\TranslateController@page')->name('translate.page');
         Route::post('/pages/translate/start', 'Admin\TranslateController@start')->name('translate.start');

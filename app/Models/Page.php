@@ -12,7 +12,7 @@ class Page extends TranslatableModel
     protected $fillable = ['id', 'input_topic', 'input_prompt', 'slug', 'reading_time', 'category_id', 'author_id', 'image', 'edited', 'translated', 'products', 'live', 'editmode', 'batch', 'gemini_model'];
 
     protected $translationModel = PageTranslation::class;
-    protected $translationAttributes = ['title', 'introduction', 'conclusion'];
+    protected $translationAttributes = ['title', 'introduction', 'conclusion', 'introduction_humanized', 'conclusion_humanized', 'introduction_gemini', 'conclusion_gemini'];
     protected $translationForeignKey = 'page_id';
 
     /**
