@@ -24,7 +24,7 @@ class PagesController extends Controller
         if (isset($request->live)) {
             $pages = $pageModel->pages()->where('live', 1)->get();
         } else if (isset($request->notlive)) {
-            $pages = $pageModel->pages()->where('live', 0)->get();
+            $pages = $pageModel->pages()->where('live', null)->get();
         } else if (isset($request->translated)) {
             $pages = $pageModel->pages()->where('translated', 1)->get();
         } else if (isset($request->nottranslated)) {
