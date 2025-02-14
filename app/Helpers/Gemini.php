@@ -334,7 +334,7 @@ if (!function_exists('PageCreator')) {
 
                         ".$input_prompt."
 
-                        Your persona should be an expert in this topic, with a tone that is informal and engaging.
+                        Your persona should be an expert in this topic, with a tone that is formal but engaging.
 
                         Create an introduction to the page.
 
