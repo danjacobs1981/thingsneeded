@@ -15,7 +15,7 @@ class HomeController extends Controller
         $pages = Page::where('live', true)
             ->latest()
             ->withTranslation()
-            ->take(9)
+            ->take(45)
             ->get();
 
         // set head items
